@@ -1,0 +1,22 @@
+# Important! Everyone can read the root collection
+[read-root]
+user = .*
+collection =
+permission = r
+
+# Authenticated users can read and write their own collections.
+[owner-write]
+user = .+
+collection = ^%(login)s(/.*)?
+permission = rw
+
+# For this to work you have to create symlinks by hand
+[shared-rw]
+user = .+
+collection = ^.+/shared-.*
+permission = rw
+
+[deny-others]
+user = .*
+collection = .*
+permission =
